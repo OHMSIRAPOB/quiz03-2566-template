@@ -21,8 +21,7 @@ export const GET = async (request) => {
     {
       ok: true,
       message: room,
-    },
-    { status: 404 }
+    }
   );
 };
 
@@ -46,7 +45,7 @@ export const POST = async (request) => {
   const messageId = nanoid();
   DB.messages.push({ roomId, messageId, messageText });
   writeDB();
-  
+
   return NextResponse.json({
     ok: true,
     message: "Message has been sent",
