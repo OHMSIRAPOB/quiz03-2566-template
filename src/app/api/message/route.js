@@ -46,7 +46,6 @@ export const POST = async (request) => {
   writeDB();
   return NextResponse.json({
     ok: true,
-    // messageId,
     message: "Message has been sent",
   });
 };
@@ -57,7 +56,6 @@ export const DELETE = async (request) => {
   const role = payload.role;
 
   if (role !== "SUPER_ADMIN") {
-    // fix this Code
     return NextResponse.json(
       {
         ok: false,
