@@ -27,10 +27,12 @@ export const GET = async (request) => {
 };
 
 export const POST = async (request) => {
+
   readDB();
   const body = await request.json();
   const { roomId, messageText } = body;
   const room = DB.messages.filter((room) => room.roomId === roomId);
+
   if (room === true) {
     return NextResponse.json(
       {
@@ -44,6 +46,7 @@ export const POST = async (request) => {
   const messageId = nanoid();
   DB.messages.push({ roomId, messageId, messageText });
   writeDB();
+  
   return NextResponse.json({
     ok: true,
     message: "Message has been sent",
